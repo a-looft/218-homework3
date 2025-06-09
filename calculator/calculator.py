@@ -2,22 +2,19 @@ from typing import List
 from calculator.calculation import Calculation
 
 class Calculator:
-
     history: List[Calculation] = []
 
+    @classmethod
+    def add_calculation(cls, calculation: Calculation) -> None:
+        cls.history.append(calculation)
 
     @classmethod
-    def addCalculation(class, calculation: Calculation) -> None:
-        class.history.append(calculation)
+    def get_last_calculation(cls) -> Calculation:
+        return cls.history[-1]
 
     @classmethod
-    def getLastCalculation(class) -> Calculation:
-        return class.history[-1]
-
-    @classmethod
-    def clearHistory(class) -> None:
-        class.history.clear()
-
+    def clear_history(cls) -> None:
+        cls.history.clear()
 
     @staticmethod
     def add(a: float, b: float) -> float:
