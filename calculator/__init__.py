@@ -1,2 +1,2 @@
-from calculator import Calculator, Calculation
-
+from .calculator import Calculator
+from .calculation import Calculation

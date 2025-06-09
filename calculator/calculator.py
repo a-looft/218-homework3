@@ -1,8 +1,11 @@
+# pylint: disable=invalid-name, missing-module-docstring, missing-class-docstring, missing-function-docstring
+
 from typing import List
 from calculator.calculation import Calculation
 
 class Calculator:
     history: List[Calculation] = []
+
 
     @classmethod
     def add_calculation(cls, calculation: Calculation) -> None:
@@ -15,6 +18,7 @@ class Calculator:
     @classmethod
     def clear_history(cls) -> None:
         cls.history.clear()
+
 
     @staticmethod
     def add(a: float, b: float) -> float:
