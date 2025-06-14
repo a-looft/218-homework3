@@ -8,7 +8,7 @@ def main():
         operation = sys.argv[3]
 
         if not a.isdigit() or not b.isdigit():
-            raise ValueError(f"Invalid number input: {a} or {b} is not a valid number.")
+            raise ValueError(f"{a} or {b} is not a valid number.")
 
         a = int(a)
         b = int(b)
@@ -23,16 +23,16 @@ def main():
             try:
                 result = Calculator.divide(a, b)
             except ZeroDivisionError:
-                print("An error occurred: Cannot divide by zero")
+                print("cannot divide by zero")
                 return
         else:
-            print(f"Unknown operation: {operation}")
+            print(f"unknown operation: {operation}")
             return
 
         print(f"The result of {a} {operation} {b} is equal to {result}")
 
     except IndexError:
-        print("Usage: python main.py <a> <b> <operation>")
+        print("python main.py <a> <b> <operation>")
     except ValueError as e:
         print(e)
 
