@@ -1,6 +1,8 @@
-import pytest
-from faker import Faker
+# pylint: disable=invalid-name, missing-module-docstring, missing-class-docstring, missing-function-docstring, disable=possibly-used-before-assignment
+
 import random
+from faker import Faker
+
 
 fake = Faker()
 
@@ -25,7 +27,7 @@ def generate_test_data():
     elif op == 'multiply':
         expected = a * b
     elif op == 'divide':
-        expected = a / b if b != 0 else 'ZeroDivisionError'
+        expected = 'ZeroDivisionError' if b == 0 else a / b
     return (a, b, op, expected)
 
 def pytest_generate_tests(metafunc):

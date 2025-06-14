@@ -1,7 +1,10 @@
+# pylint: disable=invalid-name, missing-module-docstring, missing-class-docstring, missing-function-docstring
+
+from faker import Faker
 import pytest
 from calculator.calculation import Calculation
 from calculator.calculator import Calculator
-from faker import Faker
+
 
 fake = Faker()
 
@@ -59,7 +62,7 @@ def test_divide_by_zero():
 
 
 def test_add_calculation_and_get_last():
-    Calculator.clear_history() 
+    Calculator.clear_history()
     calc = Calculation(2, 3, Calculator.add)
     Calculator.add_calculation(calc)
     result = Calculator.get_last_calculation().get_result()
@@ -95,4 +98,3 @@ def test_generated_data(a_b_op_expected):
         else:
             with pytest.raises(ZeroDivisionError):
                 Calculator.divide(a, b)
-

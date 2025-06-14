@@ -1,3 +1,5 @@
+# pylint: disable=invalid-name, missing-module-docstring, missing-class-docstring, missing-function-docstring
+
 import sys
 from calculator import Calculator 
 
