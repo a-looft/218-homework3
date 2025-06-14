@@ -1,6 +1,10 @@
 import pytest
 from calculator.calculation import Calculation
 from calculator.calculator import Calculator
+from faker import Faker
+
+fake = Faker()
+
 
 @pytest.fixture
 def sample_data():
@@ -43,6 +47,8 @@ def test_multiply(a, b, expected):
     (10, 2, 5),
     (9, 3, 3)
 ])
+
+
 def test_divide(a, b, expected):
     assert Calculator.divide(a, b) == expected
 
@@ -67,4 +73,26 @@ def test_clear_history():
     assert len(Calculator.history) == 0
 
 
+def test_fake_add():
+    a = fake.random_int(min=1, max=100)
+    b = fake.random_int(min=1, max=100)
+    result = Calculator.add(a, b)
+    assert result == a + b
+
+
+def test_generated_data(a_b_op_expected):
+    a, b, op, expected = a_b_op_expected
+
+    if op == 'add':
+        assert Calculator.add(a, b) == expected
+    elif op == 'subtract':
+        assert Calculator.subtract(a, b) == expected
+    elif op == 'multiply':
+        assert Calculator.multiply(a, b) == expected
+    elif op == 'divide':
+        if b != 0:
+            assert Calculator.divide(a, b) == expected
+        else:
+            with pytest.raises(ZeroDivisionError):
+                Calculator.divide(a, b)
 
